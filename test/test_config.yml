@@ -10,5 +10,9 @@ Services:
     bucket:
       googol: true
       nanosoft: true
-
-
+  ModuleService:
+    compute:
+      pear: true
+  ClassService:
+    compute:
+      pear: true

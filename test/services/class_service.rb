@@ -1,6 +1,7 @@
 module Services
   class ClassService
-    def compute
+    def self.compute(user)
+      return false unless service_authorized?(user)
       return 42
     end
   end

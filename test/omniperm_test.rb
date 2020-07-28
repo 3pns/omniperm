@@ -10,6 +10,14 @@ describe Omniperm::Core do
     @secret_service = Services::InternalService::SecretService.new(@user)
   end
 
+  it 'should properly detect hierarchy and method_name from a module method' do
+    assert_equal 42, Services::ModuleService.compute(@user)
+  end
+
+  it 'should properly detect hierarchy and method_name from a class method' do
+    assert_equal 42, Services::ClassService.compute(@user)
+  end
+
   it 'should deny if element has default to true' do
     assert_equal false, @internal_service.save_data
   end
