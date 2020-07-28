@@ -5,7 +5,7 @@ module Omniperm
       raise Exception.new "Omniperm: Unauthorized" if returnable.to_s == "raise" and authorization == false
     end
 
-    def self.authorize_service(context, returnable: "boolean", instance_values: nil, hierarchy: name)
+    def self.authorize_service(context, returnable: "boolean")
 
       if [Class, Module].include?(self.class)
         # do class method assignments

@@ -4,11 +4,13 @@ module Omniperm
   module Helpers
     private
       def service_authorized?(context = nil)
-        Core.authorize_service(context, returnable: "boolean", instance_values: instance_values, hierarchy: name)
+        # TODO instance_values undefiend when not called from an isntance ?
+        Core.authorize_service(context, returnable: "boolean")
       end
 
       def service_authorized!(context = nil)
-        Core.authorize_service(context, returnable: "raise", instance_values: instance_values)
+        # TODO instance_values undefiend when not called from an isntance ?
+        Core.authorize_service(context, returnable: "raise")
       end
   end
 end
