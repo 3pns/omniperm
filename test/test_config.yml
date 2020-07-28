@@ -1,9 +1,14 @@
-User:
-  load_data: true
-  buy:
-    nanosoft: true
-    pear: true
-  bucket:
-    googol: true
-    nanosoft: true
+Services:
+  InternalService:
+    default: false
+    SecretService: true
+  ExternalService:
+    load_data: true
+    buy:
+      nanosoft: true
+      pear: true
+    bucket:
+      googol: true
+      nanosoft: true
+
 

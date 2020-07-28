@@ -1,25 +1,33 @@
 module Omniperm
-  class Core
+  module Core
     def self.authorize(returnable, authorization)
       return authorization if returnable.to_s == "boolean"
       raise Exception.new "Omniperm: Unauthorized" if returnable.to_s == "raise" and authorization == false
     end
 
-    def self.authorize_service(context, returnable: "boolean")
+    def self.authorize_service(context, returnable: "boolean", hierarchy: "")
 
       if [Class, Module].include?(self.class)
         # do class method assignments
-        hierarchy = name
+        #hierarchy = name
         method_name = caller_locations(2,1)[0].label
       else
         # do instance method assignments
-        hierarchy = self.class.to_s
+        #hierarchy = self.class.to_s
         method_name = caller_locations(2,1)[0].label
       end
-      context_connection_type = determine_connection_type(context)
-      whitelisted_contexts = ServiceAuthorization.instance.whitelisted_contexts
-      rules = ServiceAuthorization.instance.rules
-      tmp = caller_locations
+      strategy = Omniperm.config.determine_strategy.call(context)
+      whitelisted_contexts = Omniperm.config.whitelisted_contexts
+      rules = Omniperm.config.rules
+
+      puts "**************"
+      #require 'debug'
+      puts name
+      puts hierarchy
+      puts method_name
+      puts strategy
+      puts whitelisted_contexts
+      puts rules
 
       return self.authorize(returnable, false) unless whitelisted_contexts.include?(strategy)
       stack = [] + hierarchy.split("::") + [method_name] + [""]
