@@ -5,10 +5,8 @@ module Omniperm
       raise Exception.new "Omniperm: Unauthorized" if returnable.to_s == "raise" and authorization == false
     end
 
-    def self.authorize_service(context, returnable: "boolean", hierarchy: "")
-
+    def self.authorize_service(context, returnable: "boolean", hierarchy: "", strategy: "default")
       method_name = caller_locations(2,1)[0].label
-      strategy = Omniperm.config.determine_strategy.call(context)
       whitelisted_contexts = Omniperm.config.whitelisted_contexts
       rules = Omniperm.config.rules
 

@@ -16,9 +16,9 @@ Omniperm.configure do |config|
   config.config_file = 'test/test_config.yml'
   config.whitelisted_contexts = ["nanosoft", "pear", "googol"]
   config.determine_strategy = -> (obj){
-      return obj if obj.class == String
-      return @user.adaptor_type if @user
-      return obj.adaptor_type if obj.class == User
-      return "default"
+    return obj if obj.class == String
+    return @user.adaptor_type if @user
+    return obj.adaptor_type if obj.class == User
+    return "default"
   }
 end

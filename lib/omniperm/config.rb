@@ -38,6 +38,14 @@ module Omniperm
       @rules = YAML.load_file(@config_file)
     end
 
+    def determine_strategy=(new_strategy)
+      @determine_strategy = new_strategy
+      Object.class_eval do
+        def __omniperm_determine_strategy(context)
+          self.instance_exec(context, &Omniperm.config.determine_strategy)
+        end
+      end
+    end
   end
 end
 
