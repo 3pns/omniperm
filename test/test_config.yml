@@ -16,3 +16,12 @@ Services:
   ClassService:
     compute:
       pear: true
+  ExternalServiceClassDecorated:
+    googol: true # all true for googol
+    load_data: true
+    buy:
+      nanosoft: true
+      pear: true
+    bucket:
+      googol: true
+      nanosoft: true
