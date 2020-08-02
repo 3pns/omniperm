@@ -1,0 +1,18 @@
+#############################
+######### Omniperm ##########
+#############################
+# Describe your authorization strategy in this file
+
+# ExampleClass: 
+#   default: false
+#   pear: true
+#   amazonia: false
+# ExampleModule:
+#   pear: true
+#   nanosoft: false
+#   NestedClass: true 
+# TestClass: true
+#   default: true
+#   Nested:
+#     nested_method: false
+#     another_nested_method: true

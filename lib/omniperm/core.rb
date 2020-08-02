@@ -7,10 +7,10 @@ module Omniperm
 
     def self.authorize_service(context, returnable: "boolean", hierarchy: "", strategy: "default")
       method_name = caller_locations(2,1)[0].label
-      whitelisted_contexts = Omniperm.config.whitelisted_contexts
+      whitelisted_strategies = Omniperm.config.whitelisted_strategies
       rules = Omniperm.config.rules
 
-      return self.authorize(returnable, false) unless whitelisted_contexts.include?(strategy)
+      return self.authorize(returnable, false) unless whitelisted_strategies.include?(strategy)
       stack = [] + hierarchy.split("::") + [method_name] + [""]
       while stack.slice!(-1) != nil do
         rule = rules

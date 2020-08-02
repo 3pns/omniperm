@@ -11,14 +11,14 @@ module Omniperm
         end
       end
 
-      def service_authorized?(context = nil)
-        strategy = __omniperm_determine_strategy(context)
-        Core.authorize_service(context, returnable: "boolean", hierarchy: hierarchy, strategy: strategy)
+      def service_authorized?(obj = nil)
+        strategy = __omniperm_determine_strategy(obj)
+        Core.authorize_service(obj, returnable: "boolean", hierarchy: hierarchy, strategy: strategy)
       end
 
-      def service_authorized!(context = nil)
-        strategy = __omniperm_determine_strategy(context)
-        Core.authorize_service(context, returnable: "raise", hierarchy: hierarchy, strategy: strategy)
+      def service_authorized!(obj = nil)
+        strategy = __omniperm_determine_strategy(obj)
+        Core.authorize_service(obj, returnable: "raise", hierarchy: hierarchy, strategy: strategy)
       end
   end
 end
