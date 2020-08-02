@@ -1,4 +1,4 @@
-require 'yaml'
+require 'yaml' if not Object.const_defined?("YAML")
 
 module Omniperm
   # Configures global settings for Omniperm
