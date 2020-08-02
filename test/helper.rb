@@ -7,6 +7,7 @@ require_relative 'services/class_service'
 require_relative 'services/module_service'
 require_relative 'services/external_service'
 require_relative 'services/internal_service'
+require_relative 'services/external_service_class_decorated'
 require 'minitest/spec'
 require 'minitest/autorun'
 Dir["models/services/*.rb"].each {|file| require file }
