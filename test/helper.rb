@@ -14,7 +14,7 @@ Dir["models/services/*.rb"].each {|file| require file }
 # configure Omniperm
 Omniperm.configure do |config|
   config.config_file = 'test/test_config.yml'
-  config.whitelisted_contexts = ["nanosoft", "pear", "googol"]
+  config.whitelisted_strategies = ["nanosoft", "pear", "googol"]
   config.determine_strategy = -> (obj){
     return obj if obj.class == String
     return @user.adaptor_type if @user

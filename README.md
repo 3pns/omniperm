@@ -3,3 +3,9 @@
 # OmniPerm
 
 With Omniperm you can centralize your authorization strategies in a YAML file against a configurable context
+
+Install for Ruby on Rails applications
+
+```
+rails g omniperm:install
+```
