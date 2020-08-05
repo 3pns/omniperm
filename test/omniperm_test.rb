@@ -5,6 +5,7 @@ require_relative 'helper'
 describe Omniperm::Core do
   before do
     @user = User.new(:pear)
+    @user_nanosoft = User.new(:nanosoft)
     @service = Services::ExternalService.new(@user)
     @internal_service = Services::InternalService.new(@user)
     @secret_service = Services::InternalService::SecretService.new(@user)
@@ -16,6 +17,13 @@ describe Omniperm::Core do
 
   it 'should properly detect hierarchy and method_name from a class method' do
     assert_equal 42, Services::ClassService.compute(@user)
+    assert_equal false, Services::ClassService.compute(@user_nanosoft)
+  end
+
+  it 'should properly detect instance variables from a class method' do
+    assert_equal 42, Services::ClassService.compute_instance_variable
+    @user = @user_nanosoft
+    assert_equal false, Services::ClassService.compute_instance_variable
   end
 
   it 'should deny if element has default to true' do
