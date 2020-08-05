@@ -14,8 +14,8 @@ module Omniperm
         target_methods.reject{|value| [:inject_before_to_methods, :__before_method, :__after_method].include?(value) }.each { |m|
           # Rename original method
           target = nil
-          target = self if instance_methods(false).include?(m.to_sym)
-          target = self.singleton_class if singleton_methods(false).include?(m.to_sym)
+          target = self if instance_methods(false).include?(m.to_sym) # decorate instance methods
+          # target = self.singleton_class if singleton_methods(false).include?(m.to_sym) # decorate class methods
           if target
             target.send(:alias_method, "__#{m}_original", m)
             target.define_method m do |*args, **kwargs|

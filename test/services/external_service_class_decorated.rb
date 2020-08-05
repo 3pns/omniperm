@@ -20,5 +20,9 @@ module Services
     def n42
       return 42
     end
+
+    def self.my_class_method
+      return 42
+    end
   end
 end

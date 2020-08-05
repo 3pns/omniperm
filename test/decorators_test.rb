@@ -20,6 +20,11 @@ describe Omniperm::Core do
     assert_equal 42, @service_class_decorated_allowed.buy
   end
 
+  it 'should not perform authorization for class methods' do
+    # @user is pear
+    assert_equal 42, Services::ExternalServiceClassDecorated.my_class_method
+  end
+
   it 'should perform authorization' do
     assert_equal false, @service_class_decorated_allowed.bucket
   end
